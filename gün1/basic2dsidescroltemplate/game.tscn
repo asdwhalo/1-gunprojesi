@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpsrlvw4j0tec"]
 
-[ext_resource type="PackedScene" uid="uid://cjivwp6lsa31e" path="res://basic2dsidescroltemplate/player.tscn" id="1_wd7tq"]
-[ext_resource type="TileSet" uid="uid://dunt48raspbqa" path="res://basic2dsidescroltemplate/placeholderset.tres" id="2_xcb13"]
+[ext_resource type="PackedScene" uid="uid://cjivwp6lsa31e" path="res://gün1/basic2dsidescroltemplate/player.tscn" id="1_wd7tq"]
+[ext_resource type="TileSet" uid="uid://dunt48raspbqa" path="res://gün1/basic2dsidescroltemplate/placeholderset.tres" id="2_xcb13"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_80nbo"]
 

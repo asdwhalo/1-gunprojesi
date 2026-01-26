@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Basic2DSideController
+
 @export var speed:float = 2500
 @export var jump_vel:float = 100.0
 @export var max_vel:float = 100
@@ -11,10 +13,14 @@ var accel_timer := 0.0
 var jump_timer:float = 0.0
 var direction:float
 @onready var spr: Sprite2D = $Sprite2D
+
+
 func jump(jump_velocity:float,delta:float = 1.0)->void:
 	velocity.y -= jump_velocity * delta
+
+
 func _physics_process(delta: float) -> void:
-	
+	# tenaryler <true değeri> if <şart> else <false değeri>
 	direction = Input.get_axis("left","right")
 	velocity.x = direction *speed * delta
 	if Input.is_action_just_pressed("right"):
