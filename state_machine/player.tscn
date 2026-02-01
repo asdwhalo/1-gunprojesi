@@ -21,16 +21,24 @@ shape = SubResource("RectangleShape2D_fyt5u")
 position = Vector2(0, -6)
 texture = ExtResource("2_v7ppb")
 
-[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("ground_state")]
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "ground_state", "fall_state", "jump_state")]
 script = ExtResource("3_v7ppb")
+current_state = NodePath("fallState")
 ground_state = NodePath("groundState")
+fall_state = NodePath("fallState")
+jump_state = NodePath("jumpState")
 
-[node name="fallState" type="Node" parent="stateMachine" node_paths=PackedStringArray("player")]
+[node name="fallState" type="Node" parent="stateMachine" node_paths=PackedStringArray("parent", "player")]
 script = ExtResource("4_fyt5u")
+parent = NodePath("..")
 player = NodePath("../..")
 
-[node name="groundState" type="Node" parent="stateMachine"]
+[node name="groundState" type="Node" parent="stateMachine" node_paths=PackedStringArray("parent", "player")]
 script = ExtResource("5_l0fm7")
+parent = NodePath("..")
+player = NodePath("../..")
 
-[node name="jumpState" type="Node" parent="stateMachine"]
+[node name="jumpState" type="Node" parent="stateMachine" node_paths=PackedStringArray("parent", "player")]
 script = ExtResource("6_aopk1")
+parent = NodePath("..")
+player = NodePath("../..")

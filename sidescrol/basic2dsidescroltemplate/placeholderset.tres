@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://qcg6gmh7g76y" path="res://sidescrol/basic2dsidescroltemplate/placeholder.png" id="1_hn51a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s30n3"]
+resource_name = "tile"
 texture = ExtResource("1_hn51a")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
