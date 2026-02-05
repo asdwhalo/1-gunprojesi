@@ -35,6 +35,7 @@ player = NodePath("../..")
 
 [node name="groundState" type="Node" parent="stateMachine" node_paths=PackedStringArray("parent", "player")]
 script = ExtResource("5_l0fm7")
+time_to_end_coyote = 5.0
 parent = NodePath("..")
 player = NodePath("../..")
 

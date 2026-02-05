@@ -3,6 +3,7 @@ class_name StateMachine
 
 @export var current_state : state = null
 var player:CharacterBody2D = get_parent()
+var on_coyote:bool = false
 @export var ground_state :state
 @export var fall_state :state
 @export var jump_state :state
