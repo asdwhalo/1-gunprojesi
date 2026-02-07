@@ -7,7 +7,7 @@ func jump(jump_velocity:float,delta:float = 1.0)->void:
 func _process(delta: float) -> void:
 	if not player.is_on_floor():
 		player.velocity.y += 100 * delta
-		player.jump_timer += delta +0.93
+		player.jump_timer += delta +1
 	else:
 		player.jump_timer = 0.0
 		parent.change_state(parent.ground_state)
