@@ -1,5 +1,5 @@
-extends CharacterBody2D
-
+extends Entity
+class_name SMPLayer
 
 @export var speed:float = 2500
 @export var jump_vel:float = 100.0
@@ -18,7 +18,10 @@ var direction:float
 func jump(jump_velocity:float,delta:float = 1.0)->void:
 	velocity.y -= jump_velocity * delta
 
-
+# bunun yüzünden hasar alınamayor AMK
+#func take_damage(_amount):
+	#await damaged
+	#global_position.x += -5 if spr.flip_h == true else 5
 func _physics_process(delta: float) -> void:
 	# tenaryler <true değeri> if <şart> else <false değeri>
 	direction = Input.get_axis("left","right")

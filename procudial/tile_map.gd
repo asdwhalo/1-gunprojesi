@@ -5,6 +5,10 @@ class_name generator
  
 var noise:FastNoiseLite = FastNoiseLite.new()
 
+
+@export var noise_type:FastNoiseLite.NoiseType
+@export var noise_domain_warp:FastNoiseLite.DomainWarpType
+
 @export var tilelayer:TileMapLayer 
 @export var map_dimensions:Vector2 = Vector2i(40,40)
 @export var total_steps:int = 600
@@ -14,7 +18,8 @@ var noise:FastNoiseLite = FastNoiseLite.new()
 @export_tool_button("clear") var clear_button = clear
 #FIXME
 func _ready() -> void:
-	noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	noise.noise_type = noise_type
+	noise.domain_warp_type = noise_domain_warp
 	clear()
 	generate_map()
 func clear():

@@ -13,7 +13,8 @@ var on_coyote:bool = false
 func change_state(new_state:state)->void:
 	var old_state:state = current_state
 	current_state = new_state
-	print(str(current_state.name))
+	if old_state != new_state:
+		print(str(current_state.name))
 	old_state.exit()
 	current_state.enter()
 	

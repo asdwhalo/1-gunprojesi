@@ -1,28 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1yavaupvipfc"]
+[gd_scene format=3 uid="uid://d1yavaupvipfc"]
 
 [ext_resource type="PackedScene" uid="uid://cs6n8ckl0ir64" path="res://state_machine/player.tscn" id="1_pi78e"]
+[ext_resource type="Script" uid="uid://clwq68smcswtc" path="res://sidescrol/damage_system/hitbox.gd" id="2_ekqek"]
+[ext_resource type="Script" uid="uid://b77uipteayh38" path="res://sidescrol/damage_system/entity.gd" id="3_kjruj"]
+[ext_resource type="Script" uid="uid://ckjrirgyko2o1" path="res://sidescrol/damage_system/hurt_box.gd" id="4_aai8o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pi78e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi78e"]
 size = Vector2(13, 20)
 
-[node name="demo" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekqek"]
+size = Vector2(20, 14)
 
-[node name="player" parent="." instance=ExtResource("1_pi78e")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pysi0"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="demo" type="Node2D" unique_id=1322523634]
+
+[node name="player" parent="." unique_id=705096731 instance=ExtResource("1_pi78e")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=36682745]
 constant_linear_velocity = Vector2(0, 4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=195819958]
 position = Vector2(0, 20)
 shape = SubResource("WorldBoundaryShape2D_pi78e")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=163021208]
 zoom = Vector2(5, 5)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1614103844]
 position = Vector2(-55, 6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=728748349]
 shape = SubResource("RectangleShape2D_pi78e")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=754779057 node_paths=PackedStringArray("coll")]
+position = Vector2(51, 13)
+script = ExtResource("2_ekqek")
+coll = NodePath("CollisionShape2D")
+metadata/_custom_type_script = "uid://clwq68smcswtc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1686457224]
+shape = SubResource("RectangleShape2D_ekqek")
+debug_color = Color(0.94897145, 0.19546011, 0.30574447, 0.41960785)
+
+[node name="Entity" type="CharacterBody2D" parent="." unique_id=1421883693]
+position = Vector2(-87, 8)
+script = ExtResource("3_kjruj")
+metadata/_custom_type_script = "uid://b77uipteayh38"
+
+[node name="Hurtbox" type="Area2D" parent="Entity" unique_id=784060882 node_paths=PackedStringArray("parent")]
+script = ExtResource("4_aai8o")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://ckjrirgyko2o1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entity/Hurtbox" unique_id=1008342291]
+shape = SubResource("RectangleShape2D_pysi0")
+debug_color = Color(0.2707809, 0.6329995, 0, 0.41960785)

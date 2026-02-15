@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dunt48raspbqa"]
+[gd_resource type="TileSet" format=3 uid="uid://dunt48raspbqa"]
 
 [ext_resource type="Texture2D" uid="uid://qcg6gmh7g76y" path="res://sidescrol/basic2dsidescroltemplate/placeholder.png" id="1_hn51a"]
 

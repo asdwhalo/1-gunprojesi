@@ -1,45 +1,80 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs6n8ckl0ir64"]
+[gd_scene format=3 uid="uid://cs6n8ckl0ir64"]
 
 [ext_resource type="Script" uid="uid://cqu5ijm77pumh" path="res://state_machine/player.gd" id="1_0x155"]
 [ext_resource type="Texture2D" uid="uid://b70eme742nxlm" path="res://sidescrol/basic2dsidescroltemplate/placeholdercharacter.png" id="2_v7ppb"]
+[ext_resource type="Script" uid="uid://bqho2d82dourf" path="res://state_machine/attack_manager.gd" id="3_2eqnu"]
 [ext_resource type="Script" uid="uid://bwvcvht6vmqo6" path="res://state_machine/state_machine.gd" id="3_v7ppb"]
 [ext_resource type="Script" uid="uid://d1tf7mgke1yn6" path="res://state_machine/fall_state.gd" id="4_fyt5u"]
 [ext_resource type="Script" uid="uid://ptewej57huos" path="res://state_machine/ground_state.gd" id="5_l0fm7"]
 [ext_resource type="Script" uid="uid://drxkxr3fgvwdi" path="res://state_machine/jump_state.gd" id="6_aopk1"]
+[ext_resource type="Script" uid="uid://ckjrirgyko2o1" path="res://sidescrol/damage_system/hurt_box.gd" id="7_aopk1"]
+[ext_resource type="Script" uid="uid://clwq68smcswtc" path="res://sidescrol/damage_system/hitbox.gd" id="9_y26dj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyt5u"]
-size = Vector2(4, 10)
+size = Vector2(3, 10)
 
-[node name="player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aopk1"]
+size = Vector2(5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y26dj"]
+size = Vector2(7, 7)
+
+[node name="player" type="CharacterBody2D" unique_id=426769090]
 script = ExtResource("1_0x155")
+speed = 3500.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1241297997]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_fyt5u")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=790726773]
 position = Vector2(0, -6)
 texture = ExtResource("2_v7ppb")
 
-[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "ground_state", "fall_state", "jump_state")]
+[node name="AttackManager" type="Node" parent="." unique_id=100279452 node_paths=PackedStringArray("hitbox_holder", "hitbox")]
+script = ExtResource("3_2eqnu")
+hitbox_holder = NodePath("../hitboxholder")
+hitbox = NodePath("../hitboxholder/Hitbox")
+
+[node name="stateMachine" type="Node" parent="." unique_id=241399398 node_paths=PackedStringArray("current_state", "ground_state", "fall_state", "jump_state")]
 script = ExtResource("3_v7ppb")
 current_state = NodePath("fallState")
 ground_state = NodePath("groundState")
 fall_state = NodePath("fallState")
 jump_state = NodePath("jumpState")
 
-[node name="fallState" type="Node" parent="stateMachine" node_paths=PackedStringArray("parent", "player")]
+[node name="fallState" type="Node" parent="stateMachine" unique_id=1969298265 node_paths=PackedStringArray("parent", "player")]
 script = ExtResource("4_fyt5u")
 parent = NodePath("..")
 player = NodePath("../..")
 
-[node name="groundState" type="Node" parent="stateMachine" node_paths=PackedStringArray("parent", "player")]
+[node name="groundState" type="Node" parent="stateMachine" unique_id=158447442 node_paths=PackedStringArray("parent", "player")]
 script = ExtResource("5_l0fm7")
 time_to_end_coyote = 5.0
 parent = NodePath("..")
 player = NodePath("../..")
 
-[node name="jumpState" type="Node" parent="stateMachine" node_paths=PackedStringArray("parent", "player")]
+[node name="jumpState" type="Node" parent="stateMachine" unique_id=209935228 node_paths=PackedStringArray("parent", "player")]
 script = ExtResource("6_aopk1")
 parent = NodePath("..")
 player = NodePath("../..")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1064836836 node_paths=PackedStringArray("parent")]
+script = ExtResource("7_aopk1")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://ckjrirgyko2o1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1342663231]
+position = Vector2(-0.5, -5)
+shape = SubResource("RectangleShape2D_aopk1")
+
+[node name="hitboxholder" type="Marker2D" parent="." unique_id=1643968435]
+position = Vector2(-10, -7)
+
+[node name="Hitbox" type="Area2D" parent="hitboxholder" unique_id=1083042815 node_paths=PackedStringArray("coll")]
+script = ExtResource("9_y26dj")
+coll = NodePath("CollisionShape2D")
+metadata/_custom_type_script = "uid://clwq68smcswtc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitboxholder/Hitbox" unique_id=225602284]
+shape = SubResource("RectangleShape2D_y26dj")
