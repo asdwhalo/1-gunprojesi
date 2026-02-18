@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://nyw24urec821"]
+
+[ext_resource type="Script" uid="uid://dsebpmhxit4wb" path="res://geo_dash/geo_cube.gd" id="1_n7e75"]
+[ext_resource type="Texture2D" uid="uid://b2pgum2v7yvdc" path="res://geo_dash/8pix.jpeg" id="2_lgvig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6gy4"]
+size = Vector2(7.5, 7)
+
+[node name="geoCube" type="CharacterBody2D" unique_id=2038580333]
+script = ExtResource("1_n7e75")
+
+[node name="8Pix" type="Sprite2D" parent="." unique_id=1966986042]
+texture = ExtResource("2_lgvig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=442983372]
+shape = SubResource("RectangleShape2D_w6gy4")
+
+[node name="obstakableRay" type="RayCast2D" parent="." unique_id=871435667]
+target_position = Vector2(5, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=602073445]

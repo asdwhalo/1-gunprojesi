@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://ptewej57huos" path="res://state_machine/ground_state.gd" id="5_l0fm7"]
 [ext_resource type="Script" uid="uid://drxkxr3fgvwdi" path="res://state_machine/jump_state.gd" id="6_aopk1"]
 [ext_resource type="Script" uid="uid://ckjrirgyko2o1" path="res://sidescrol/damage_system/hurt_box.gd" id="7_aopk1"]
-[ext_resource type="Script" uid="uid://clwq68smcswtc" path="res://sidescrol/damage_system/hitbox.gd" id="9_y26dj"]
+[ext_resource type="Script" uid="uid://dkysbca62s5uc" path="res://state_machine/meleeHitbox.gd" id="9_y26dj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyt5u"]
 size = Vector2(3, 10)
@@ -71,10 +71,10 @@ shape = SubResource("RectangleShape2D_aopk1")
 [node name="hitboxholder" type="Marker2D" parent="." unique_id=1643968435]
 position = Vector2(-10, -7)
 
-[node name="Hitbox" type="Area2D" parent="hitboxholder" unique_id=1083042815 node_paths=PackedStringArray("coll")]
+[node name="Hitbox" type="Area2D" parent="hitboxholder" unique_id=743583517 node_paths=PackedStringArray("coll")]
 script = ExtResource("9_y26dj")
 coll = NodePath("CollisionShape2D")
-metadata/_custom_type_script = "uid://clwq68smcswtc"
+metadata/_custom_type_script = "uid://dkysbca62s5uc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitboxholder/Hitbox" unique_id=225602284]
 shape = SubResource("RectangleShape2D_y26dj")

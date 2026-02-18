@@ -7,8 +7,15 @@ class_name Hurtbox
 var current_iframe_time:float = 0.0
 var on_iframe : bool = false
 var delta_time:float
+var hitbox_search_timer : Timer = Timer.new()
+var timer : Timer = Timer.new()
 
-
+func _init() -> void:
+	connect("area_entered",on_hit)
+	hitbox_search_timer.timeout.connect(search_hitbox)
+	timer.wait_time = max_on_iframe
+	
+	
 func _process(delta: float) -> void:
 	delta_time = delta
 
@@ -17,19 +24,15 @@ static func add_second(delta:float,second_amount:int = 1)->float:
 	return second_amount * delta
 
 
-func _init() -> void:
-	connect("area_entered",on_hit)
-	#connect("take_damage",parent.take_damage)
 
+var is_in_hitbox : bool = false
 
 func on_hit(area:Area2D):
 	if area is not Hitbox or area.monitoring == false:
 		return
 	
 	parent.take_damage(area.damage)
+	hitbox_search_timer.start()
 	
-	#if current_iframe_time == 0.0 :
-		#current_iframe_time += add_second(delta_time)
-		#on_iframe = false
-	#if current_iframe_time >= max_imframe_time:
-		#on_iframe = true
+func search_hitbox():
+	pass
