@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dsebpmhxit4wb" path="res://geo_dash/geo_cube.gd" id="1_n7e75"]
 [ext_resource type="Texture2D" uid="uid://b2pgum2v7yvdc" path="res://geo_dash/8pix.jpeg" id="2_lgvig"]
+[ext_resource type="Script" uid="uid://bpypndbl4o0yh" path="res://geo_dash/control.gd" id="3_lgvig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6gy4"]
 size = Vector2(7.5, 7)
@@ -19,3 +20,40 @@ shape = SubResource("RectangleShape2D_w6gy4")
 target_position = Vector2(5, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=602073445]
+zoom = Vector2(5, 5)
+
+[node name="hud" type="CanvasLayer" parent="Camera2D" unique_id=2012562273]
+
+[node name="Control" type="Control" parent="Camera2D/hud" unique_id=269292643 node_paths=PackedStringArray("player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_lgvig")
+player = NodePath("../../..")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/hud/Control" unique_id=639144997]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lossMessage" type="Label" parent="Camera2D/hud/Control/VBoxContainer" unique_id=247908784]
+layout_mode = 2
+
+[node name="restast" type="Button" parent="Camera2D/hud/Control/VBoxContainer" unique_id=1265593685]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "RESTART GAME"
+
+[connection signal="pressed" from="Camera2D/hud/Control/VBoxContainer/restast" to="Camera2D/hud/Control" method="_on_restast_pressed"]
