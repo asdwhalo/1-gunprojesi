@@ -19,4 +19,6 @@ position = Vector2(0, -8)
 visible = false
 main = NodePath("../../../..")
 
+[connection signal="cube_collided" from="." to="geoCube" method="_onmain_cube_collided"]
+
 [editable path="geoCube"]
