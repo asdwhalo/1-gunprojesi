@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjivwp6lsa31e"]
+[gd_scene format=3 uid="uid://cjivwp6lsa31e"]
 
 [ext_resource type="Texture2D" uid="uid://b70eme742nxlm" path="res://sidescrol/basic2dsidescroltemplate/placeholdercharacter.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://0op860jku7o0" path="res://sidescrol/basic2dsidescroltemplate/player.gd" id="1_onrkg"]
@@ -6,13 +6,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(4, 10)
 
-[node name="player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4aurc"]
+size = Vector2(7, 10.5)
+
+[node name="player" type="CharacterBody2D" unique_id=1669949586]
 script = ExtResource("1_onrkg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1631530668]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_4flbx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1532271180]
 position = Vector2(0, -6)
 texture = ExtResource("1_4flbx")
+
+[node name="interactionArea" type="Area2D" parent="." unique_id=1358120810]
+position = Vector2(-7, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactionArea" unique_id=915899038]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_4aurc")

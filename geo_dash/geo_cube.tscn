@@ -85,8 +85,16 @@ _data = {
 &"jump": SubResource("Animation_yvnx7")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lgvig"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.39999998
+scale_max = 0.39999998
+
 [node name="geoCube" type="CharacterBody2D" unique_id=2038580333]
 script = ExtResource("1_n7e75")
+speed = 50.0
 
 [node name="8Pix" type="Sprite2D" parent="." unique_id=1966986042]
 texture = ExtResource("2_lgvig")
@@ -128,6 +136,7 @@ grow_vertical = 2
 
 [node name="lossMessage" type="Label" parent="Camera2D/hud/Control/VBoxContainer" unique_id=247908784]
 layout_mode = 2
+text = "youloss"
 
 [node name="restast" type="Button" parent="Camera2D/hud/Control/VBoxContainer" unique_id=1265593685]
 layout_mode = 2
@@ -136,5 +145,13 @@ text = "RESTART GAME"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=949001864]
 libraries/ = SubResource("AnimationLibrary_yao4f")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=315127470]
+emitting = false
+amount = 15
+texture = ExtResource("2_lgvig")
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_lgvig")
 
 [connection signal="pressed" from="Camera2D/hud/Control/VBoxContainer/restast" to="Camera2D/hud/Control" method="_on_restast_pressed"]

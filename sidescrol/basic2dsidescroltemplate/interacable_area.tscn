@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cgfmq4gkff08a"]
+
+[ext_resource type="Script" uid="uid://ddeh37hn1qvig" path="res://sidescrol/basic2dsidescroltemplate/interacable_object.gd" id="1_nkjw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25u37"]
+
+[sub_resource type="GDScript" id="GDScript_7s6ge"]
+script/source = "extends Node
+
+@export var parent :InteracableArea
+"
+
+[node name="InteracableArea" type="Area2D" unique_id=938048059]
+script = ExtResource("1_nkjw5")
+metadata/_custom_type_script = "uid://ddeh37hn1qvig"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747787916]
+shape = SubResource("RectangleShape2D_25u37")
+
+[node name="Node" type="Node" parent="." unique_id=1926488040 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_7s6ge")
+parent = NodePath("..")
