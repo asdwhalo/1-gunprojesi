@@ -38,11 +38,19 @@ func rotate_to(is_left:bool)->void:
 
 
 func move_to(destination:int)->void:
-    player_position = destination
+    if destination != 1:
+        player_position = destination
+    else:
+        pass # error
 
 
 func _draw() -> void:
+    var front_rect:Rect2 
+    front_rect.size = Vector2(1,1)
+    front_rect.position = Vector2(1,1)
+    if view[1] == 1:
+        draw_rect(front_rect,Color.RED)
     pass # 3b çizim
 
-func _process(_delta: float) -> void:
+func _process(_delta: float) -> void: #input
     queue_redraw()
