@@ -23,12 +23,26 @@ func calculate_view()->void:
     view[2] = player_position + 1 # sol
 
 
+# FIXME burasını düzelt :-)
+
+func rotate_to(is_left:bool)->void:
+    calculate_view()
+    if is_left:
+        view[0] = view[1]
+        view[1] = view[2]
+        view[2] = view[2]
+    else:
+        view[0] = view[1]
+        view[1] = view[2]
+        view[2] = view[2]
+
+
 func move_to(destination:int)->void:
-    pass
+    player_position = destination
 
 
 func _draw() -> void:
-    pass
+    pass # 3b çizim
 
 func _process(_delta: float) -> void:
     queue_redraw()
