@@ -57,8 +57,10 @@ func dash()->void:
 	await dash_timer.timeout
 	can_dash = false
 	dash_cooldown_timer.start()
+	
+	speed_state = CurrentSpeedState.NORMAL
 	current_gravity_state = GravityState.NORMAL
-	speed_state= CurrentSpeedState.NORMAL
+
 	await dash_cooldown_timer.timeout
 	can_dash = true
 
@@ -122,9 +124,9 @@ func _physics_process(delta: float) -> void:
 			jump(jump_amount)
 
 		else:
-			velocity.y += 100 * delta
+			velocity.y += current_gravity_state * delta
 
 	if Input.is_action_just_released("accept") or velocity.y <= -max_vel:
-		velocity.y += 100 * delta
+		velocity.y += current_gravity_state * delta
 
 	move_and_slide()
