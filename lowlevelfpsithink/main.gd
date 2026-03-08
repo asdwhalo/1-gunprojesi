@@ -1,6 +1,7 @@
 extends Node2D
 
 
+
 var map:PackedInt32Array = [
     1,0,0,
     1,0,1,
@@ -8,9 +9,11 @@ var map:PackedInt32Array = [
 ]
 
 
+
 var starting_position:int = 1
 var player_position:int 
 var view:PackedInt32Array = []
+
 
 
 func _init():
@@ -18,13 +21,13 @@ func _init():
 
 
 func calculate_view()->void:
-    view[0] = player_position - 1 #sağ
+    view[0] = player_position - 1 # sağ
     view[1] = player_position + 4 # karşı
     view[2] = player_position + 1 # sol
+    view[3] = player_position - 4 # arka
 
 
 # FIXME burasını düzelt :-)
-
 func rotate_to(is_left:bool)->void:
     calculate_view()
     if is_left:

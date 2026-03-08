@@ -16,4 +16,4 @@ func on_interaction():
 
 
 func on_interac():
-	pass
+	print("interaced")
