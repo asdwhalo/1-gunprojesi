@@ -11,7 +11,7 @@ size = Vector2(7, 10.5)
 
 [node name="player" type="CharacterBody2D" unique_id=1669949586]
 script = ExtResource("1_onrkg")
-dash_to_normal_timer = 0.3
+dash_to_normal_timer = 0.5
 dash_speed = 5000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1631530668]

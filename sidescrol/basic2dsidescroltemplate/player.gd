@@ -121,7 +121,7 @@ func _physics_process(delta: float) -> void:
 			jump(jump_amount)
 
 		elif is_on_wall():
-			jump(jump_amount)
+			jump(jump_amount/3)
 
 		else:
 			velocity.y += current_gravity_state * delta
